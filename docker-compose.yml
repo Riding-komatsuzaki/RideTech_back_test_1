@@ -1,0 +1,10 @@
+services:
+  web:
+    image: php:8.3-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    # 必要に応じて以下を有効化（URLリライトや拡張）:
+    # command: >
+    #   bash -lc "a2enmod rewrite && docker-php-ext-install pdo pdo_mysql && apache2-foreground"
