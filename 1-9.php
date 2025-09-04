@@ -7,6 +7,8 @@
  *     - $users は ['name'=>string,'age'=>int] の配列
  *     - 年齢が 20 以上の人の name だけを取り出し、カンマ区切りの文字列で返す
  *  2) テストデータで呼び出して結果を表示
+ *     - $data = [['name'=>'Taro','age'=>19],['name'=>'Mika','age'=>22],['name'=>'Ken','age'=>20]];
+ *     - 期待: "Mika,Ken"
  *
  * 実行方法
  *  - php 1-9.php

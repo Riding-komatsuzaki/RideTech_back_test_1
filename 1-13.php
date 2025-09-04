@@ -12,7 +12,11 @@
  *  $emails = ['a@x.com','b@y.com','c@x.com','bad','d@z.com','e@x.com'];
  *  print_r(countByDomain($emails));
  *  期待:
- *    Array ( [x.com] => 3 [y.com] => 1 [z.com] => 1 )
+ *    Array ( 
+ *      [x.com] => 3 
+ *      [y.com] => 1 
+ *      [z.com] => 1 
+ *    )
  *
  * 実行方法
  *  - php 1-13.php
