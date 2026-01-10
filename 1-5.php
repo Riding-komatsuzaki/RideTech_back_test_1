@@ -12,3 +12,20 @@
  */
 // ここから実装してください
 
+$fruits = [
+  'apple',
+  'banana',
+  'orange'
+];
+
+for ($i =0;
+$i < count($fruits);
+$i++
+){
+  echo $i . "i" . $fruits[$i] . PHP_EOL;
+}
+
+foreach (
+  $fruits as $fruit){
+    echo $fruit . PHP_EOL;
+  }

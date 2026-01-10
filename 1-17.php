@@ -28,3 +28,32 @@
  */
 // ここから実装してください
 
+function sortUsers(array $users): array {
+  // 元の配列を壊さないようにコピー
+  $sorted = $users;
+
+  usort($sorted, function ($a, $b) {
+      // 1. score の比較（降順：大きい順）
+      if ($a['score'] !== $b['score']) {
+          // $b <=> $a にすることで降順になる
+          return $b['score'] <=> $a['score'];
+      }
+
+      // 2. score が同じなら name の比較（昇順：辞書順）
+      return $a['name'] <=> $b['name'];
+  });
+
+  return $sorted;
+}
+
+// テスト例
+$users = [
+  ['name' => 'Ken', 'score' => 80],
+  ['name' => 'Ann', 'score' => 80],
+  ['name' => 'Bob', 'score' => 90],
+];
+
+$sorted = sortUsers($users);
+foreach ($sorted as $u) {
+  echo $u['name'] . '(' . $u['score'] . ')' . "\n";
+}

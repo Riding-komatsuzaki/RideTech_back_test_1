@@ -10,6 +10,10 @@
  *  - php 1-6.php
  */
 // ここから関数を定義してください
+function greeting(string $name = "Guest"): string {
+  return "Hello, " . $name . "!";
+}
 
 // ここで関数を呼び出して表示してください
-
+echo greeting("Mika") . PHP_EOL;
+echo greeting() . PHP_EOL;

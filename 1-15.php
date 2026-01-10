@@ -22,3 +22,19 @@
  */
 // ここから実装してください
 
+function flatten2(array $matrix): array {
+  $result = [];
+
+  foreach ($matrix as $subArray) {
+      // 内側の配列が配列でない（単一の値）場合も考慮するなら is_array チェックを入れますが、
+      // 今回の要件（2次元配列を前提）ならそのままループできます。
+      foreach ($subArray as $value) {
+          $result[] = $value;
+      }
+  }
+
+  return $result;
+}
+
+// テスト例
+print_r(flatten2([[1, 2], [3], [4, 5]]));

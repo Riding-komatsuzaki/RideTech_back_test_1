@@ -26,6 +26,49 @@
  *  - php 1-10.php
  */
 // ここから関数を定義してください
+function topByTotal(array $orders, int $topN): string {
+  $userTotals = [];
+
+  // 1. ユーザーごとの合計を計算
+  foreach ($orders as $order) {
+      $user = $order['user'];
+      $total = $order['total'];
+
+      // 数値に変換できる場合のみ加算
+      if (is_numeric($total)) {
+          if (!isset($userTotals[$user])) {
+              $userTotals[$user] = 0;
+          }
+          $userTotals[$user] += (float)$total;
+      }
+  }
+
+  // 2. 合計の降順（大きい順）にソート
+  arsort($userTotals);
+
+  // 3. 上位 $topN を抽出してフォーマット
+  $topList = array_slice($userTotals, 0, $topN, true);
+  $results = [];
+  foreach ($topList as $name => $sum) {
+      $results[] = "{$name}: {$sum}";
+  }
+
+  // 4. カンマ区切りで返す
+  return implode(",", $results);
+}
 
 // ここから表示処理を実装してください（テスト呼び出し）
+$orders = [
+  ['user' => 'Taro', 'total' => 100],
+  ['user' => 'Mika', 'total' => '120'],
+  ['user' => 'Taro', 'total' => 50],
+  ['user' => 'Ken', 'total' => 'x'],
+  ['user' => 'Yuki', 'total' => 200],
+  ['user' => 'Mika', 'total' => '30'],
+  ['user' => 'Ken', 'total' => 70],
+  ['user' => 'Taro', 'total' => '20'],
+  ['user' => 'Yuki', 'total' => 'abc'],
+  ['user' => 'Hana', 'total' => 150]
+];
 
+echo topByTotal($orders, 3) . PHP_EOL;
