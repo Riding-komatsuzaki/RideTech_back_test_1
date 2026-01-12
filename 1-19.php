@@ -17,3 +17,22 @@
  */
 // ここから実装してください
 
+function sumWithTax(array $prices, float $tax): int {
+  $total = 0;
+
+  foreach ($prices as $price) {
+      // 1. 数値に変換できるものだけを対象にする
+      if (is_numeric($price)) {
+          // 2. 税率を掛けて計算
+          $withTax = (float)$price * (1 + $tax);
+          
+          // 3. 各要素ごとに四捨五入して合計に足す
+          $total += (int)round($withTax);
+      }
+  }
+
+  return $total;
+}
+
+// テスト例
+echo sumWithTax([100, "200", "x", 50], 0.1) . PHP_EOL;

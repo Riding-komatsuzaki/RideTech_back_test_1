@@ -14,6 +14,26 @@
  *  - php 1-9.php
  */
 // ここから関数を定義してください
+function filterAdults(array $users): string {
+  $adultNames = [];
+
+  foreach ($users as $user) {
+      // age が 20 以上かチェック
+      if ($user['age'] >= 20) {
+          // 条件に合う人の名前を配列に追加
+          $adultNames[] = $user['name'];
+      }
+  }
+
+  // カンマ区切りの文字列にして返す
+  return implode(",", $adultNames);
+}
 
 // ここから表示処理を実装してください（テスト呼び出し）
+$data = [
+  ['name' => 'Taro', 'age' => 19],
+  ['name' => 'Mika', 'age' => 22],
+  ['name' => 'Ken', 'age' => 20]
+];
 
+echo filterAdults($data) . PHP_EOL;

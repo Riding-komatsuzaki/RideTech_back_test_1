@@ -12,3 +12,19 @@
  */
 // ここから実装してください
 
+// 1) 多次元配列の作成
+$mat = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+// 2) と 3) をループで処理
+foreach ($mat as $index => $row) {
+  // 2) 各行をスペース区切りで表示
+  echo implode(" ", $row) . PHP_EOL;
+
+  // 3) 各行の合計を表示
+  $sum = array_sum($row);
+  echo "row{$index}: sum={$sum}" . PHP_EOL;
+}

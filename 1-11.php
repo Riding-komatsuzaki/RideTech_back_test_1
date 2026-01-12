@@ -22,5 +22,31 @@
  * 実行方法
  *  - php 1-11.php
  */
-// ここから実装してください
+function arrayWithout(array $src, array $remove): array {
+  $filtered = [];
 
+  foreach ($src as $item) {
+      // $item が $remove の中のどれかと一致するかチェックするフラグ
+      $isMatch = false;
+      
+      foreach ($remove as $r) {
+          // ここで明示的に === を使って厳密比較を行う
+          if ($item === $r) {
+              $isMatch = true;
+              break; // 一致するものが見つかったら、これ以上 $remove を探す必要はない
+          }
+      }
+
+      // どの $remove にも一致しなかった場合だけ、新しい配列に追加する
+      if (!$isMatch) {
+          $filtered[] = $item;
+      }
+  }
+
+  // 詰め直し（0,1,2... にする）をして返す
+  return array_values($filtered);
+}
+
+// テスト
+$result = arrayWithout([10, "10", 20, 10, 30], [10]);
+print_r($result);

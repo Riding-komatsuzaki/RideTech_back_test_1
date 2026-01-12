@@ -27,3 +27,20 @@
  */
 // ここから実装してください
 
+function uniqueStable(array $xs): array {
+  $result = [];
+
+  foreach ($xs as $x) {
+      // すでに結果の配列の中に「厳密比較（true）」で同じ値が入っているかチェック
+      if (!in_array($x, $result, true)) {
+          // 入っていなければ追加
+          $result[] = $x;
+      }
+  }
+
+  return $result;
+}
+
+// テスト
+$xs = [1, "1", 1, 2, 2, "2"];
+var_dump(uniqueStable($xs));

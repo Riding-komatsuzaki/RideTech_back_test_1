@@ -15,3 +15,12 @@
  *  - php 1-1.php
  */
 // ここから実装してください
+$name = "Taro";
+
+echo "Hello, " . $name . "!" ;
+
+echo "\n";
+
+
+$age = 20;
+var_dump($age);

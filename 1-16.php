@@ -21,3 +21,25 @@
  */
 // ここから実装してください
 
+function getIn(array $arr, string $path, $default = null) {
+  // パスをドットで分割
+  $keys = explode('.', $path);
+  $current = $arr;
+
+  foreach ($keys as $key) {
+      // 現在の変数が配列であり、かつキーが存在するかチェック
+      if (is_array($current) && array_key_exists($key, $current)) {
+          $current = $current[$key];
+      } else {
+          // 途中でキーがない、あるいは配列でなくなった場合はデフォルト値を返す
+          return $default;
+      }
+  }
+
+  return $current;
+}
+
+// テスト
+$data = ['user' => ['profile' => ['name' => 'Mika']]];
+echo getIn($data, 'user.profile.name', 'NA') . PHP_EOL;
+echo getIn($data, 'user.address.city', 'NA') . PHP_EOL;
