@@ -22,7 +22,7 @@ for ($i =0;
 $i < count($fruits);
 $i++
 ){
-  echo $i . "i" . $fruits[$i] . PHP_EOL;
+  echo $i . ":" . $fruits[$i] . PHP_EOL;
 }
 
 foreach (
