@@ -12,6 +12,29 @@
  *  - php 1-7.php
  */
 // ここから関数を定義してください
+function avgOf(array $xs): float {
+  $sum = 0;
+  $count = 0;
+
+  foreach ($xs as $x) {
+      // 数値に変換できるものだけを対象にする
+      if (is_numeric($x)) {
+          $sum += (float)$x;
+          $count++;
+      }
+  }
+
+  // 対象が0件なら 0.0 を返す（0で割るエラーを防ぐ）
+  if ($count === 0) {
+      return 0.0;
+  }
+
+  return $sum / $count;
+}
 
 // ここから表示処理を実装してください（テスト呼び出し）
+$data = [1, "2", "x", 3.0];
+$result = avgOf($data);
 
+// 小数第1位まで表示
+printf("%.1f" . PHP_EOL, $result);

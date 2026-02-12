@@ -14,3 +14,23 @@
  */
 // ここから実装してください
 
+$a = "10";
+$b = "3.5";
+$c = "foo";
+$total = 0;
+
+if (is_numeric($a)) {
+  $total += (float)$a;
+}
+if (is_numeric($b)) {
+  $total += (float)$b;
+}
+if (is_numeric($c)) {
+  $total += (float)$c;
+}
+
+echo $total . PHP_EOL;
+
+echo gettype($a) . PHP_EOL;
+echo gettype($b) . PHP_EOL;
+echo gettype($c) . PHP_EOL;
